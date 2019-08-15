@@ -4,6 +4,11 @@ ext {
     minSdkVersion = 23
     targetSdkVersion = 28
 
+    constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.2"
+    androidMaterial = "com.google.android.material:material:1.0.0-beta01"
+    coreKtx = "androidx.core:core-ktx:1.2.0-alpha03"
+    appCompat = "androidx.appcompat:appcompat:1.0.0-beta01"
+
     kotlin = [:]
     kotlin.version = getRootProject().kotlin_version
     kotlin.with {
@@ -15,13 +20,11 @@ ext {
     rxbinding = [:]
     rxbinding.with {
       version = '3.0.0'
-      rxbinding = "com.jakewharton.rxbinding2:rxbinding:$version"
-      support = "com.jakewharton.rxbinding2:rxbinding-support-v4:$version"
-      appcompat = "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$version"
-      design = "com.jakewharton.rxbinding2:rxbinding-design:$version"
-      recyclerview = "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:$version"
+      rxbinding = "com.jakewharton.rxbinding3:rxbinding:$version"
+      appcompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:$version"
+      material = "com.jakewharton.rxbinding3:rxbinding-material:$version"
+      recyclerview = "com.jakewharton.rxbinding3:rxbinding-recyclerview:$version"
     }
-    rxReplayingShare = 'com.jakewharton.rx2:replaying-share:2.0.1'
 
     javax = [:]
     javax.with {
@@ -46,7 +49,6 @@ ext {
       ktx             = "androidx.room:room-ktx:$version"
       roomProcessor   = "androidx.room:room-compiler:$version"
       roomRxJava      = "androidx.room:room-rxjava2:$version"
-      roomTest        = "androidx.room:room-testing:testing:$version"
     }
 
     timber = "com.jakewharton.timber:timber:4.6.0"
