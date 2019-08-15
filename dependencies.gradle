@@ -2,21 +2,7 @@ ext {
   deps = [:]
   deps.with {
     minSdkVersion = 23
-    targetSdkVersion = 27
-
-    androidSupport = [:]
-    androidSupport.with {
-      version = '27.0.2'
-      appcompat         = "com.android.support:appcompat-v7:$version"
-      design            = "com.android.support:design:$version"
-      supportCompat     = "com.android.support:support-compat:$version"
-      supportCoreUtils  = "com.android.support:support-core-utils:$version"
-      supportCoreUi     = "com.android.support:support-core-ui:$version"
-      cardview          = "com.android.support:cardview-v7:$version"
-      recyclerview      = "com.android.support:recyclerview-v7:$version"
-    }
-
-    constraintLayout = 'com.android.support.constraint:constraint-layout:1.1.0-beta2'
+    targetSdkVersion = 28
 
     kotlin = [:]
     kotlin.version = getRootProject().kotlin_version
@@ -24,11 +10,11 @@ ext {
       stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$version"
     }
 
-    rxJava2 = 'io.reactivex.rxjava2:rxjava:2.1.7'
-    rxAndroid = 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    rxJava2 = 'io.reactivex.rxjava2:rxjava:2.2.11'
+    rxAndroid = 'io.reactivex.rxjava2:rxandroid:2.1.1'
     rxbinding = [:]
     rxbinding.with {
-      version = '2.1.0'
+      version = '3.0.0'
       rxbinding = "com.jakewharton.rxbinding2:rxbinding:$version"
       support = "com.jakewharton.rxbinding2:rxbinding-support-v4:$version"
       appcompat = "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$version"
@@ -36,14 +22,6 @@ ext {
       recyclerview = "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:$version"
     }
     rxReplayingShare = 'com.jakewharton.rx2:replaying-share:2.0.1'
-
-    conductor = [:]
-    conductor.with {
-      version = '2.1.4'
-      support = "com.bluelinelabs:conductor-support:$version"
-      rxlifecycle2 = "com.bluelinelabs:conductor-rxlifecycle2:$version"
-      autodispose = "com.bluelinelabs:conductor-autodispose:$version"
-    }
 
     javax = [:]
     javax.with {
@@ -53,7 +31,7 @@ ext {
 
     dagger2 = [:]
     dagger2.with {
-      version = '2.14.1'
+      version = '2.24'
       dagger                = "com.google.dagger:dagger:$version"
       daggerAndroid         = "com.google.dagger:dagger-android:$version"
       daggerAndroidSupport  = "com.google.dagger:dagger-android-support:$version"
@@ -63,11 +41,12 @@ ext {
 
     room = [:]
     room.with {
-      version         = '1.0.0'
-      room            = "android.arch.persistence.room:runtime:$version"
-      roomProcessor   = "android.arch.persistence.room:compiler:$version"
-      roomRxJava      = "android.arch.persistence.room:rxjava2:$version"
-      roomTest        = "android.arch.persistence.room:testing:$version"
+      version         = '2.1.0'
+      room            = "androidx.room:room-runtime:$version"
+      ktx             = "androidx.room:room-ktx:$version"
+      roomProcessor   = "androidx.room:room-compiler:$version"
+      roomRxJava      = "androidx.room:room-rxjava2:$version"
+      roomTest        = "androidx.room:room-testing:testing:$version"
     }
 
     timber = "com.jakewharton.timber:timber:4.6.0"
@@ -80,27 +59,9 @@ ext {
       option = "org.funktionale:funktionale-option:$version"
     }
 
-    stetho = [:]
-    stetho.with {
-      version = "1.5.0"
-      core = "com.facebook.stetho:stetho:$version"
-      okhttp3 = "com.facebook.stetho:stetho-okhttp3:$version"
-    }
-
-//    spek = [:]
-//    spek.with {
-//      version             = "1.1.2"
-//      api                 = "org.jetbrains.spek:spek-api:$version"
-//      junitPlatformEngine = "org.jetbrains.spek:spek-junit-platform-engine:$version"
-//    }
-//    junitPlatformRunner = 'org.junit.platform:junit-platform-runner:1.0.0-M4'
-//    junitJupiterApi = 'org.junit.jupiter:junit-jupiter-api:5.0.0-M4'
-
     googletruth = 'com.google.truth:truth:0.37'
 
     mockitoKotlin = 'com.nhaarman:mockito-kotlin:1.5.0'
-
-    fab = 'com.github.clans:fab:1.6.4'
 
     junit = 'junit:junit:4.12'
   }
