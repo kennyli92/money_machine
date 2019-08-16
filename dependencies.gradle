@@ -21,6 +21,7 @@ ext {
     rxbinding.with {
       version = '3.0.0'
       rxbinding = "com.jakewharton.rxbinding3:rxbinding:$version"
+      core = "com.jakewharton.rxbinding3:rxbinding-core:$version"
       appcompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:$version"
       material = "com.jakewharton.rxbinding3:rxbinding-material:$version"
       recyclerview = "com.jakewharton.rxbinding3:rxbinding-recyclerview:$version"

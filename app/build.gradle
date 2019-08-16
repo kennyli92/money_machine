@@ -4,51 +4,52 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
-    defaultConfig {
-        applicationId "com.example.money_machine"
-        minSdkVersion deps.minSdkVersion
-        targetSdkVersion deps.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  compileSdkVersion 28
+  defaultConfig {
+    applicationId "com.example.money_machine"
+    minSdkVersion deps.minSdkVersion
+    targetSdkVersion deps.targetSdkVersion
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
+  }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation deps.appCompat
-    implementation deps.coreKtx
-    implementation deps.constraintLayout
-    implementation deps.androidMaterial
-    implementation deps.kotlin.stdlib
-    implementation deps.rxJava2
-    implementation deps.rxAndroid
-    implementation deps.rxbinding.rxbinding
-    implementation deps.rxbinding.appcompat
-    implementation deps.rxbinding.material
-    implementation deps.rxbinding.recyclerview
-    implementation deps.javax.inject
-    compileOnly deps.javax.annotation
-    implementation deps.dagger2.dagger
-    implementation deps.dagger2.daggerAndroid
-    implementation deps.dagger2.daggerAndroidSupport
-    kapt deps.dagger2.daggerProcessor
-    kapt deps.dagger2.daggerCompiler
-    implementation deps.timber
-    implementation deps.threetenabp
-    implementation deps.funktionale.option
-    implementation deps.room.room
-    kapt deps.room.roomProcessor
-    implementation deps.room.roomRxJava
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation deps.appCompat
+  implementation deps.coreKtx
+  implementation deps.constraintLayout
+  implementation deps.androidMaterial
+  implementation deps.kotlin.stdlib
+  implementation deps.rxJava2
+  implementation deps.rxAndroid
+  implementation deps.rxbinding.rxbinding
+  implementation deps.rxbinding.core
+  implementation deps.rxbinding.appcompat
+  implementation deps.rxbinding.material
+  implementation deps.rxbinding.recyclerview
+  implementation deps.javax.inject
+  compileOnly deps.javax.annotation
+  implementation deps.dagger2.dagger
+  implementation deps.dagger2.daggerAndroid
+  implementation deps.dagger2.daggerAndroidSupport
+  kapt deps.dagger2.daggerProcessor
+  kapt deps.dagger2.daggerCompiler
+  implementation deps.timber
+  implementation deps.threetenabp
+  implementation deps.funktionale.option
+  implementation deps.room.room
+  kapt deps.room.roomProcessor
+  implementation deps.room.roomRxJava
 
-    testImplementation deps.junit
-    testImplementation deps.googletruth
-    testImplementation deps.mockitoKotlin
+  testImplementation deps.junit
+  testImplementation deps.googletruth
+  testImplementation deps.mockitoKotlin
 }
