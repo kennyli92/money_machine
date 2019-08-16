@@ -1,5 +1,4 @@
-package com.smshift.smshift.db
-
+package com.example.money_machine.db
 
 import android.content.Context
 import androidx.room.Database

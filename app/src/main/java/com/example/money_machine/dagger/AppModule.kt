@@ -2,7 +2,6 @@ package com.example.money_machine.dagger
 
 import android.app.Application
 import android.content.Context
-import com.smshift.smshift.dagger.DbModule
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

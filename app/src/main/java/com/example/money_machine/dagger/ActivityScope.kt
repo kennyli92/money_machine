@@ -1,4 +1,4 @@
-package com.smshift.smshift.dagger
+package com.example.money_machine.dagger
 
 import javax.inject.Scope
 

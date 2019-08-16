@@ -1,7 +1,7 @@
-package com.smshift.smshift.dagger
+package com.example.money_machine.dagger
 
 import android.content.Context
-import com.smshift.smshift.db.RoomDb
+import com.example.money_machine.db.RoomDb
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

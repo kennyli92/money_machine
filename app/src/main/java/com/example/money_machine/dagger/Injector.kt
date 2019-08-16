@@ -1,10 +1,7 @@
-package com.smshift.smshift.dagger
+package com.example.money_machine.dagger
 
 import android.app.Application
 import com.example.money_machine.MainActivity
-import com.example.money_machine.dagger.AppComponent
-import com.example.money_machine.dagger.AppModule
-import com.example.money_machine.dagger.DaggerAppComponent
 import com.smshift.smshift.extensions.requireNotNull
 
 
