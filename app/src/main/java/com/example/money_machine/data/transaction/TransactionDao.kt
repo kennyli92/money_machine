@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import io.reactivex.Completable
-import io.reactivex.Flowable
+import io.reactivex.Single
 
 @Dao
 interface TransactionDao {
@@ -15,5 +15,5 @@ interface TransactionDao {
 
   // get all transaction by type: spending or saving
   @Query("SELECT * FROM `transaction` WHERE isSpending = :isSpending")
-  fun getTransactionsByType(isSpending: Boolean): Flowable<Transaction>
+  fun getTransactionsByType(isSpending: Boolean): Single<List<Transaction>>
 }
