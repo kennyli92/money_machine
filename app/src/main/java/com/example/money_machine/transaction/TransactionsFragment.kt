@@ -30,7 +30,7 @@ class TransactionsFragment : Fragment() {
     return view
   }
 
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
     adapter.items = listOf(Transaction(
       userId = "Foo Bar", date = Date(), amount = "$123.00", tag = TransactionTag.OTHER, description = "description"))
 
@@ -39,7 +39,7 @@ class TransactionsFragment : Fragment() {
       transactionType = passedArg.transactionType
     }
 
-    super.onViewCreated(view, savedInstanceState)
+    super.onActivityCreated(savedInstanceState)
   }
 
   override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

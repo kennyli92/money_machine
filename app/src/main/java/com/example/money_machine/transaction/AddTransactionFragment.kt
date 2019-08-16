@@ -13,7 +13,7 @@ class AddTransactionFragment : Fragment() {
     return  inflater.inflate(R.layout.fragment_add_transaction, container, false)
   }
 
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
     arguments?.let {
       val passedArg = TransactionsFragmentArgs.fromBundle(it)
       transactionType = passedArg.transactionType
@@ -21,6 +21,6 @@ class AddTransactionFragment : Fragment() {
 
     (activity as AppCompatActivity).supportActionBar!!.title =
       resources.getString(R.string.transaction_add_arg, resources.getString(transactionType))
-    super.onViewCreated(view, savedInstanceState)
+    super.onActivityCreated(savedInstanceState)
   }
 }
