@@ -48,6 +48,8 @@ dependencies {
   implementation deps.room.room
   kapt deps.room.roomProcessor
   implementation deps.room.roomRxJava
+  implementation deps.navComponent.fragment
+  implementation deps.navComponent.ui
 
   testImplementation deps.junit
   testImplementation deps.googletruth

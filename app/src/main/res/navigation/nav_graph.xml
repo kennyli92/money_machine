@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_graph"
+  app:startDestination="@id/tab_spending"
+>
+
+  <fragment
+    android:id="@+id/tab_spending"
+    android:name="com.example.money_machine.transaction.TransactionsFragment"
+    android:label="@string/tab_spending"
+    tools:layout="@layout/fragment_transactions"
+    />
+
+  <fragment
+    android:id="@+id/tab_saving"
+    android:name="com.example.money_machine.transaction.TransactionsFragment"
+    android:label="@string/tab_saving"
+    tools:layout="@layout/fragment_transactions"
+  />
+
+</navigation>
