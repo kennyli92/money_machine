@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">money_machine</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="tab_spending">Spending</string>
+    <string name="tab_saving">Saving</string>
 </resources>

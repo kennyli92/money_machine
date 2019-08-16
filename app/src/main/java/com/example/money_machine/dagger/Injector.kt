@@ -1,8 +1,12 @@
 package com.smshift.smshift.dagger
 
 import android.app.Application
-import com.smshift.smshift.controller.Activity
+import com.example.money_machine.MainActivity
+import com.example.money_machine.dagger.AppComponent
+import com.example.money_machine.dagger.AppModule
+import com.example.money_machine.dagger.DaggerAppComponent
 import com.smshift.smshift.extensions.requireNotNull
+
 
 class Injector private constructor() {
   companion object {
@@ -20,17 +24,9 @@ class Injector private constructor() {
       return appComponent.requireNotNull()
     }
 
-    fun getActivityComponent(activity: Activity): ActivityComponent {
+    fun getActivityComponent(activity: MainActivity): ActivityComponent {
       return getAppComponent(activity.application)
         .activityComponent(ActivityModule(activity = activity))
-    }
-
-    fun getBottomNavigationComponent(activity: Activity): BottomNavigationComponent {
-      return getActivityComponent(activity).bottomNavigationComponent()
-    }
-
-    fun getContactComponent(activity: Activity): ContactComponent {
-      return getActivityComponent(activity).contactComponent()
     }
   }
 }
