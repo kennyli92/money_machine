@@ -7,10 +7,14 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.money_machine.db.transaction.Transaction
 import com.example.money_machine.db.transaction.TransactionConverters
+import com.example.money_machine.db.transaction.TransactionDao
 
 @Database(entities = [Transaction::class], version = 1)
 @TypeConverters(value = [TransactionConverters::class])
 abstract class RoomDb : RoomDatabase() {
+
+  abstract fun transactionDao(): TransactionDao
+
   companion object {
     private const val DB_NAME = "money_machine.db"
     @Volatile private var INSTANCE: RoomDb? = null

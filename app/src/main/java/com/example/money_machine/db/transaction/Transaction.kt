@@ -2,11 +2,11 @@ package com.example.money_machine.db.transaction
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.Date
+import java.util.*
 
 @Entity(tableName = "transaction")
 data class Transaction(
-  @PrimaryKey(autoGenerate = true) val id: Long,
+  @PrimaryKey(autoGenerate = true) val id: String = UUID.randomUUID().toString(),
   val userId: String,
   val date: Date = Date(),
   val description: String = "",

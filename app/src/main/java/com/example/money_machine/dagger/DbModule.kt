@@ -2,6 +2,7 @@ package com.example.money_machine.dagger
 
 import android.content.Context
 import com.example.money_machine.db.RoomDb
+import com.example.money_machine.db.transaction.TransactionDao
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -12,5 +13,11 @@ class DbModule {
   @Provides
   fun providesRoomDb(applicationContext: Context): RoomDb {
     return RoomDb.getInstance(applicationContext)
+  }
+
+  @Singleton
+  @Provides
+  fun providesTransactionDao(db: RoomDb): TransactionDao {
+    return db.transactionDao()
   }
 }
