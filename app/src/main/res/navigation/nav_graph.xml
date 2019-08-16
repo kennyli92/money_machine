@@ -11,14 +11,39 @@
     android:id="@+id/tab_spending"
     android:name="com.example.money_machine.transaction.TransactionsFragment"
     android:label="@string/tab_spending"
-    tools:layout="@layout/fragment_transactions"
-    />
+    tools:layout="@layout/fragment_transactions">
+
+    <action
+      android:id="@+id/action_add_transaction"
+      app:destination="@id/fragment_add_transaction"
+      app:enterAnim="@anim/nav_default_enter_anim"
+      app:exitAnim="@anim/nav_default_exit_anim"
+      app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+      app:popExitAnim="@anim/nav_default_pop_exit_anim"
+      app:popUpTo="@+id/tab_spending" />
+  </fragment>
 
   <fragment
     android:id="@+id/tab_saving"
     android:name="com.example.money_machine.transaction.TransactionsFragment"
     android:label="@string/tab_saving"
-    tools:layout="@layout/fragment_transactions"
+    tools:layout="@layout/fragment_transactions">
+
+    <action
+      android:id="@+id/action_add_transaction"
+      app:destination="@id/fragment_add_transaction"
+      app:enterAnim="@anim/nav_default_enter_anim"
+      app:exitAnim="@anim/nav_default_exit_anim"
+      app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+      app:popExitAnim="@anim/nav_default_pop_exit_anim"
+      app:popUpTo="@+id/tab_saving" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/fragment_add_transaction"
+    android:name="com.example.money_machine.transaction.AddTransactionFragment"
+    android:label="@string/transaction_add"
+    tools:layout="@layout/fragment_add_transaction"
   />
 
 </navigation>
