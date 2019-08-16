@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
   private fun setupNavigation() {
     val navController = findNavController(R.id.nav_fragment)
+    setSupportActionBar(toolbar)
     setupActionBarWithNavController(navController)
     bottom_navigation.setupWithNavController(navController)
   }
