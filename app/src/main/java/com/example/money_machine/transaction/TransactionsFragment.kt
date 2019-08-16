@@ -4,14 +4,32 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.money_machine.R
+import com.example.money_machine.db.transaction.Transaction
+import com.example.money_machine.db.transaction.TransactionTag
 import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.fragment_transactions.view.*
+import java.util.*
 
 class TransactionsFragment : Fragment() {
+  // TODO: reset on destroy
+  private lateinit var adapter: TransactionsAdapter
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val view =  inflater.inflate(R.layout.fragment_transactions, container, false)
     setHasOptionsMenu(true)
+    val recyclerView = view.transaction_recycler_view
+    adapter = TransactionsAdapter()
+    recyclerView.layoutManager = LinearLayoutManager(activity)
+    recyclerView.adapter = adapter
     return view
+  }
+
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
+    adapter.items = listOf(Transaction(
+      userId = "Foo Bar", date = Date(), amount = "$123.00", tag = TransactionTag.OTHER, description = "description"))
+
+    super.onActivityCreated(savedInstanceState)
   }
 
   override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
