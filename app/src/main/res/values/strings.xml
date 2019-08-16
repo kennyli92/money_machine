@@ -5,6 +5,12 @@
   <string name="transaction_add">Add Transaction</string>
   <string name="transaction_add_arg">Add %s Transaction</string>
 
+  <string name="label_user_id">User Id</string>
+  <string name="label_date">Date</string>
+  <string name="label_amount">Amount</string>
+  <string name="label_tag">Tag</string>
+  <string name="label_description">Description</string>
+
   <!-- Nav argument values -->
   <string name="transaction_spending">Spending</string>
   <string name="transaction_saving">Saving</string>

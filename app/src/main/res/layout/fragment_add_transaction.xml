@@ -4,15 +4,89 @@
   android:orientation="vertical"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
-  <TextView
-    android:layout_width="wrap_content"
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/padding_margin_half"
-    android:paddingBottom="@dimen/padding_margin_half"
-    android:paddingStart="@dimen/padding_margin"
-    android:paddingEnd="@dimen/padding_margin"
-    android:textColor="@color/black"
-    android:gravity="center"
-    tools:text="Add Transaction"
-  />
+    android:layout_marginTop="@dimen/padding_margin"
+    android:layout_marginStart="@dimen/padding_margin_2x"
+    android:layout_marginEnd="@dimen/padding_margin_2x"
+    android:hint="@string/label_user_id"
+  >
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/add_transaction_user_id"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:inputType="text"
+      android:textSize="16sp"
+      android:textColor="@color/black"
+    />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/padding_margin"
+    android:layout_marginStart="@dimen/padding_margin_2x"
+    android:layout_marginEnd="@dimen/padding_margin_2x"
+    android:hint="@string/label_date"
+  >
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/add_transaction_date"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:inputType="date"
+      android:textSize="16sp"
+      android:textColor="@color/black"
+    />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/padding_margin"
+    android:layout_marginStart="@dimen/padding_margin_2x"
+    android:layout_marginEnd="@dimen/padding_margin_2x"
+    android:hint="@string/label_amount"
+  >
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/add_transaction_amount"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:inputType="numberDecimal"
+      android:textSize="16sp"
+      android:textColor="@color/black"
+    />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <Spinner
+    android:id="@+id/add_transaction_tag"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/padding_margin"
+    android:layout_marginStart="@dimen/padding_margin_2x"
+    android:layout_marginEnd="@dimen/padding_margin_2x"
+    android:spinnerMode="dropdown"
+    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+  >
+
+  </Spinner>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/padding_margin"
+    android:layout_marginStart="@dimen/padding_margin_2x"
+    android:layout_marginEnd="@dimen/padding_margin_2x"
+    android:hint="@string/label_description"
+  >
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/add_transaction_description"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:inputType="text"
+      android:textSize="16sp"
+      android:textColor="@color/black"
+    />
+  </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>
