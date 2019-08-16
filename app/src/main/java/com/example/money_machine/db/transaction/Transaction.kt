@@ -6,7 +6,7 @@ import java.util.*
 
 @Entity(tableName = "transaction")
 data class Transaction(
-  @PrimaryKey(autoGenerate = true) val id: String = UUID.randomUUID().toString(),
+  @PrimaryKey val id: String = UUID.randomUUID().toString(),
   val userId: String,
   val date: Date = Date(),
   val description: String = "",
