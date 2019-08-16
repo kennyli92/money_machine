@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_spending"
+        android:id="@+id/tab_spending"
         android:icon="@drawable/ic_spending_24dp"
         android:title="@string/tab_spending"/>
 
     <item
-        android:id="@+id/nav_saving"
+        android:id="@+id/tab_saving"
         android:icon="@drawable/ic_saving_24dp"
         android:title="@string/tab_saving"/>
 </menu>
