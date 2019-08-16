@@ -15,4 +15,15 @@
   <!-- Nav argument values -->
   <string name="transaction_spending">Spending</string>
   <string name="transaction_saving">Saving</string>
+
+  <string-array name="transaction_tags">
+    <item>FOOD</item>
+    <item>HEALTH</item>
+    <item>HOME</item>
+    <item>TECH</item>
+    <item>VEHICLE</item>
+    <item>CLOTH</item>
+    <item>ACCOUNT</item>
+    <item>OTHER</item>
+  </string-array>
 </resources>
