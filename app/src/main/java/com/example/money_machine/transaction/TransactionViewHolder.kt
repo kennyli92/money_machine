@@ -2,7 +2,7 @@ package com.example.money_machine.transaction
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.money_machine.db.transaction.Transaction
+import com.example.money_machine.data.transaction.Transaction
 import kotlinx.android.synthetic.main.item_transaction.view.*
 
 class TransactionViewHolder(view: View) : RecyclerView.ViewHolder(view) {

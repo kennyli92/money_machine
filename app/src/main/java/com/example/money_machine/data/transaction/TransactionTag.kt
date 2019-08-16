@@ -1,4 +1,4 @@
-package com.example.money_machine.db.transaction
+package com.example.money_machine.data.transaction
 
 enum class TransactionTag(val label: String) {
   FOOD(label = "Food"),

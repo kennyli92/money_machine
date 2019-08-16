@@ -1,13 +1,13 @@
-package com.example.money_machine.db
+package com.example.money_machine.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.money_machine.db.transaction.Transaction
-import com.example.money_machine.db.transaction.TransactionConverters
-import com.example.money_machine.db.transaction.TransactionDao
+import com.example.money_machine.data.transaction.Transaction
+import com.example.money_machine.data.transaction.TransactionConverters
+import com.example.money_machine.data.transaction.TransactionDao
 
 @Database(entities = [Transaction::class], version = 1)
 @TypeConverters(value = [TransactionConverters::class])

@@ -2,14 +2,12 @@ package com.example.money_machine.transaction
 
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.money_machine.R
-import com.example.money_machine.db.transaction.Transaction
-import com.example.money_machine.db.transaction.TransactionTag
-import com.smshift.smshift.extensions.plusAssign
+import com.example.money_machine.data.transaction.Transaction
+import com.example.money_machine.data.transaction.TransactionTag
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_transactions.view.*
 import java.util.*

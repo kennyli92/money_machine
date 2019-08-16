@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.money_machine.R
-import com.example.money_machine.db.transaction.Transaction
+import com.example.money_machine.data.transaction.Transaction
 import com.smshift.smshift.extensions.checkNotNull
 
 class TransactionsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

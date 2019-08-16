@@ -1,4 +1,4 @@
-package com.example.money_machine.db.transaction
+package com.example.money_machine.data.transaction
 
 import androidx.room.TypeConverter
 import java.util.*
