@@ -10,6 +10,7 @@
   <string name="label_amount">Amount</string>
   <string name="label_tag">Tag</string>
   <string name="label_description">Description</string>
+  <string name="done">Done</string>
 
   <!-- Nav argument values -->
   <string name="transaction_spending">Spending</string>

@@ -4,13 +4,17 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.money_machine.R
 
 class AddTransactionFragment : Fragment() {
   private var transactionType: Int = 0
   // TODO: reset on destroy
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-    return  inflater.inflate(R.layout.fragment_add_transaction, container, false)
+    val view = inflater.inflate(R.layout.fragment_add_transaction, container, false)
+    setHasOptionsMenu(true)
+
+    return view
   }
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -22,5 +26,20 @@ class AddTransactionFragment : Fragment() {
     (activity as AppCompatActivity).supportActionBar!!.title =
       resources.getString(R.string.transaction_add_arg, resources.getString(transactionType))
     super.onActivityCreated(savedInstanceState)
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    inflater.inflate(R.menu.add_transaction, menu)
+    super.onCreateOptionsMenu(menu, inflater)
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    when (item.itemId) {
+      R.id.transaction_done -> {
+        // TODO insert to db
+        return true
+      }
+    }
+    return false
   }
 }
