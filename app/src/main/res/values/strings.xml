@@ -1,6 +1,11 @@
 <resources>
-    <string name="app_name">money_machine</string>
-    <string name="tab_spending">Spending</string>
-    <string name="tab_saving">Saving</string>
-    <string name="transaction_add">Add Transaction</string>
+  <string name="app_name">money_machine</string>
+  <string name="tab_spending">Spending</string>
+  <string name="tab_saving">Saving</string>
+  <string name="transaction_add">Add Transaction</string>
+  <string name="transaction_add_arg">Add %s Transaction</string>
+
+  <!-- Nav argument values -->
+  <string name="transaction_spending">Spending</string>
+  <string name="transaction_saving">Saving</string>
 </resources>

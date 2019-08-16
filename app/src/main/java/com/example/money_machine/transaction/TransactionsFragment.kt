@@ -19,6 +19,7 @@ class TransactionsFragment : Fragment() {
   private val disposables: CompositeDisposable = CompositeDisposable()
   // TODO: reset on destroy
   private lateinit var adapter: TransactionsAdapter
+  private var transactionType: Int = 0
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val view =  inflater.inflate(R.layout.fragment_transactions, container, false)
     setHasOptionsMenu(true)
@@ -33,7 +34,11 @@ class TransactionsFragment : Fragment() {
     adapter.items = listOf(Transaction(
       userId = "Foo Bar", date = Date(), amount = "$123.00", tag = TransactionTag.OTHER, description = "description"))
 
-    //    disposables += (activity as AppCompatActivity).menu
+    arguments?.let {
+      val passedArg = TransactionsFragmentArgs.fromBundle(it)
+      transactionType = passedArg.transactionType
+    }
+
     super.onViewCreated(view, savedInstanceState)
   }
 
@@ -45,7 +50,7 @@ class TransactionsFragment : Fragment() {
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
       R.id.transaction_add -> {
-        val action = TransactionsFragmentDirections.actionAddTransaction()
+        val action = TransactionsFragmentDirections.actionAddTransaction(transactionType = transactionType)
         view!!.findNavController().navigate(action)
         return true
       }

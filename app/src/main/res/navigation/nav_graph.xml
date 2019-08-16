@@ -21,6 +21,11 @@
       app:popEnterAnim="@anim/nav_default_pop_enter_anim"
       app:popExitAnim="@anim/nav_default_pop_exit_anim"
       app:popUpTo="@+id/tab_spending" />
+
+    <argument
+      android:name="transactionType"
+      android:defaultValue="@string/transaction_spending"
+      app:argType="reference" />
   </fragment>
 
   <fragment
@@ -37,13 +42,23 @@
       app:popEnterAnim="@anim/nav_default_pop_enter_anim"
       app:popExitAnim="@anim/nav_default_pop_exit_anim"
       app:popUpTo="@+id/tab_saving" />
+
+    <argument
+      android:name="transactionType"
+      android:defaultValue="@string/transaction_saving"
+      app:argType="reference" />
   </fragment>
 
   <fragment
     android:id="@+id/fragment_add_transaction"
     android:name="com.example.money_machine.transaction.AddTransactionFragment"
     android:label="@string/transaction_add"
-    tools:layout="@layout/fragment_add_transaction"
-  />
+    tools:layout="@layout/fragment_add_transaction">
+
+    <argument
+      android:name="transactionType"
+      android:defaultValue="@string/transaction_spending"
+      app:argType="reference" />
+  </fragment>
 
 </navigation>
