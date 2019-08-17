@@ -5,7 +5,6 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.money_machine.R
-import com.example.money_machine.transaction.TransactionsFragmentArgs
 
 class AddTransactionFragment : Fragment() {
   private var transactionType: Int = 0

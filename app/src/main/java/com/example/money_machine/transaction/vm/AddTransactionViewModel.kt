@@ -1,14 +1,21 @@
 package com.example.money_machine.transaction.vm
 
 import androidx.lifecycle.ViewModel
+import com.example.money_machine.data.transaction.InsertTransactionResponse
+import com.example.money_machine.data.transaction.Transaction
+import com.example.money_machine.data.transaction.TransactionRepository
 import com.example.money_machine.util.Logger
 import com.smshift.smshift.extensions.plusAssign
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
-class AddTransactionViewModel : ViewModel() {
+class AddTransactionViewModel(
+  private val transactionType: Int,
+  private val transactionRepository: TransactionRepository
+) : ViewModel() {
   private val disposables: CompositeDisposable = CompositeDisposable()
   private val singleEventObs = PublishSubject.create<AddTransactionSingleEvent>()
 
@@ -19,18 +26,24 @@ class AddTransactionViewModel : ViewModel() {
 
   fun uiActionHandler(actionObs: Observable<AddTransactionUIAction>) {
     disposables += actionObs
+      .observeOn(Schedulers.computation())
       .flatMap {
         when (it) {
-          is AddTransactionUIAction.InsertTransaction -> onInsertTransactionAction()
+          is AddTransactionUIAction.InsertTransaction -> onInsertTransactionAction(transaction = it.transaction)
         }
       }.subscribe({
         singleEventObs.onNext(it)
       }, Logger.logErrorAndThrow())
   }
 
-  private fun onInsertTransactionAction(): Observable<AddTransactionSingleEvent> {
-    // TODO update to call TransactionRepository
-    return Observable.just(AddTransactionSingleEvent())
+  private fun onInsertTransactionAction(transaction: Transaction): Observable<AddTransactionSingleEvent> {
+    return transactionRepository.insert(transaction = transaction).map {
+      when (it) {
+        InsertTransactionResponse.Success -> AddTransactionSingleEvent(isTransactionInserted = true)
+        // add logic to display error dialog
+        is InsertTransactionResponse.Error -> AddTransactionSingleEvent()
+      }
+    }
   }
 
   override fun onCleared() {

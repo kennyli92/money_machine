@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.money_machine.R
 import com.example.money_machine.data.transaction.Transaction
 import com.example.money_machine.data.transaction.TransactionTag
-import com.example.money_machine.transaction.TransactionsFragmentArgs
-import com.example.money_machine.transaction.TransactionsFragmentDirections
 import com.example.money_machine.transaction.vm.TransactionsAdapter
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_transactions.view.*

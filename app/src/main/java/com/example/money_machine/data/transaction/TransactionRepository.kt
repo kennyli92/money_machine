@@ -1,5 +1,6 @@
 package com.example.money_machine.data.transaction
 
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,15 +16,16 @@ class TransactionRepository @Inject constructor(
   }
 
   // Return encapsulated response of Get transaction method. Can be updated to return different kinds of response
-  fun getTransactionsByType(isSpending: Boolean): Observable<GetTransactionsResponse> {
+  fun getTransactionsByType(isSpending: Boolean): Flowable<GetTransactionsResponse> {
     return transactionDao.getTransactionsByType(isSpending = isSpending)
-      .flatMapObservable {
+      .flatMap {
         if (it.isNotEmpty()) {
-          Observable.just(GetTransactionsResponse.Success(transactions = it))
+          Flowable.just(GetTransactionsResponse.Success(transactions = it))
         } else {
-          Observable.just(GetTransactionsResponse.NoTransactions)
+          Flowable.just(GetTransactionsResponse.NoTransactions)
         }
-      }.onErrorReturn {
+      }
+      .onErrorReturn {
         GetTransactionsResponse.Error(message = it.message ?: "Unknown Error")
       }
   }
