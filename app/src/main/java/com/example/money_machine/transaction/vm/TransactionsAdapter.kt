@@ -1,4 +1,4 @@
-package com.example.money_machine.transaction
+package com.example.money_machine.transaction.vm
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -30,6 +30,12 @@ class TransactionsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
     val inflater = LayoutInflater.from(parent.context.checkNotNull())
-    return TransactionViewHolder(view = inflater.inflate(viewType, parent, false))
+    return TransactionViewHolder(
+      view = inflater.inflate(
+        viewType,
+        parent,
+        false
+      )
+    )
   }
 }

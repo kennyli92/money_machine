@@ -1,11 +1,11 @@
-package com.example.money_machine.transaction
+package com.example.money_machine.transaction.fragment
 
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import com.example.money_machine.R
+import com.example.money_machine.transaction.TransactionsFragmentArgs
 
 class AddTransactionFragment : Fragment() {
   private var transactionType: Int = 0

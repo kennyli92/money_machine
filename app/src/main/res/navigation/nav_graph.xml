@@ -9,7 +9,7 @@
 
   <fragment
     android:id="@+id/tab_spending"
-    android:name="com.example.money_machine.transaction.TransactionsFragment"
+    android:name="com.example.money_machine.transaction.fragment.TransactionsFragment"
     android:label="@string/tab_spending"
     tools:layout="@layout/fragment_transactions">
 
@@ -30,7 +30,7 @@
 
   <fragment
     android:id="@+id/tab_saving"
-    android:name="com.example.money_machine.transaction.TransactionsFragment"
+    android:name="com.example.money_machine.transaction.fragment.TransactionsFragment"
     android:label="@string/tab_saving"
     tools:layout="@layout/fragment_transactions">
 
@@ -51,7 +51,7 @@
 
   <fragment
     android:id="@+id/fragment_add_transaction"
-    android:name="com.example.money_machine.transaction.AddTransactionFragment"
+    android:name="com.example.money_machine.transaction.fragment.AddTransactionFragment"
     android:label="@string/transaction_add"
     tools:layout="@layout/fragment_add_transaction">
 

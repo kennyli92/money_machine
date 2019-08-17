@@ -1,4 +1,4 @@
-package com.example.money_machine.transaction
+package com.example.money_machine.transaction.fragment
 
 import android.os.Bundle
 import android.view.*
@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.money_machine.R
 import com.example.money_machine.data.transaction.Transaction
 import com.example.money_machine.data.transaction.TransactionTag
+import com.example.money_machine.transaction.TransactionsFragmentArgs
+import com.example.money_machine.transaction.TransactionsFragmentDirections
+import com.example.money_machine.transaction.vm.TransactionsAdapter
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_transactions.view.*
 import java.util.*
@@ -48,7 +51,10 @@ class TransactionsFragment : Fragment() {
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
       R.id.transaction_add -> {
-        val action = TransactionsFragmentDirections.actionAddTransaction(transactionType = transactionType)
+        val action =
+          TransactionsFragmentDirections.actionAddTransaction(
+            transactionType = transactionType
+          )
         view!!.findNavController().navigate(action)
         return true
       }

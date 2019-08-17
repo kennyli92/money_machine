@@ -1,4 +1,4 @@
-package com.example.money_machine.transaction
+package com.example.money_machine.transaction.vm
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

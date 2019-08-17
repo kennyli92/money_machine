@@ -1,4 +1,4 @@
-package com.example.money_machine.transaction
+package com.example.money_machine.transaction.vm
 
 import androidx.lifecycle.ViewModel
 import com.example.money_machine.util.Logger

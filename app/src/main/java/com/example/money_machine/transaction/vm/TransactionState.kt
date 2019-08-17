@@ -1,4 +1,4 @@
-package com.example.money_machine.transaction
+package com.example.money_machine.transaction.vm
 
 import com.example.money_machine.data.transaction.Transaction
 
