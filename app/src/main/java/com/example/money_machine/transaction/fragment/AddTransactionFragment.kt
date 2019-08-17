@@ -5,10 +5,16 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.money_machine.R
+import com.example.money_machine.dagger.ActivityComponent
+import com.example.money_machine.util.DisposableOnLifecycleChange
+import com.example.money_machine.util.ResetDependencyOnDestroy
+import io.reactivex.disposables.CompositeDisposable
 
 class AddTransactionFragment : Fragment() {
+  private var component: ActivityComponent by ResetDependencyOnDestroy()
+  private val disposables: CompositeDisposable by DisposableOnLifecycleChange()
   private var transactionType: Int = 0
-  // TODO: reset on destroy
+
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val view = inflater.inflate(R.layout.fragment_add_transaction, container, false)
     setHasOptionsMenu(true)

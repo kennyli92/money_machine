@@ -6,19 +6,22 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.money_machine.R
+import com.example.money_machine.dagger.ActivityComponent
 import com.example.money_machine.data.transaction.Transaction
 import com.example.money_machine.data.transaction.TransactionTag
 import com.example.money_machine.transaction.vm.TransactionsAdapter
+import com.example.money_machine.util.DisposableOnLifecycleChange
+import com.example.money_machine.util.ResetDependencyOnDestroy
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_transactions.view.*
 import java.util.*
 
 class TransactionsFragment : Fragment() {
-  // TODO: dispose on destroy
-  private val disposables: CompositeDisposable = CompositeDisposable()
-  // TODO: reset on destroy
+  private var component: ActivityComponent by ResetDependencyOnDestroy()
+  private val disposables: CompositeDisposable by DisposableOnLifecycleChange()
   private lateinit var adapter: TransactionsAdapter
   private var transactionType: Int = 0
+
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val view =  inflater.inflate(R.layout.fragment_transactions, container, false)
     setHasOptionsMenu(true)
