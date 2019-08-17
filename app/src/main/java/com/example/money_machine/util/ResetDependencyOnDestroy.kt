@@ -1,8 +1,8 @@
 package com.example.money_machine.util
 
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.OnLifecycleEvent
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
@@ -10,8 +10,8 @@ import kotlin.reflect.KProperty
 class ResetDependencyOnDestroy<T : Any> {
   private var dependencyValue: T? = null
 
-  operator fun provideDelegate(thisRef: Fragment, property: KProperty<*>):
-    ReadWriteProperty<Fragment, T> {
+  operator fun provideDelegate(thisRef: LifecycleOwner, property: KProperty<*>):
+    ReadWriteProperty<LifecycleOwner, T> {
     thisRef.lifecycle.addObserver(object : LifecycleObserver {
       @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
       fun destroyDependency() {
@@ -21,12 +21,12 @@ class ResetDependencyOnDestroy<T : Any> {
       }
     })
 
-    return object : ReadWriteProperty<Fragment, T> {
-      override fun getValue(thisRef: Fragment, property: KProperty<*>): T {
+    return object : ReadWriteProperty<LifecycleOwner, T> {
+      override fun getValue(thisRef: LifecycleOwner, property: KProperty<*>): T {
         return dependencyValue ?: throw UninitializedPropertyAccessException(property.name)
       }
 
-      override fun setValue(thisRef: Fragment, property: KProperty<*>, value: T) {
+      override fun setValue(thisRef: LifecycleOwner, property: KProperty<*>, value: T) {
         dependencyValue = value
       }
     }

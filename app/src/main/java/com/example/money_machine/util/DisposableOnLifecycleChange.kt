@@ -1,8 +1,8 @@
 package com.example.money_machine.util
 
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.OnLifecycleEvent
 import io.reactivex.disposables.CompositeDisposable
 import kotlin.properties.ReadOnlyProperty
@@ -11,8 +11,8 @@ import kotlin.reflect.KProperty
 class DisposableOnLifecycleChange {
   private var disposables: CompositeDisposable? = null
 
-  operator fun provideDelegate(thisRef: Fragment, property: KProperty<*>):
-    ReadOnlyProperty<Fragment, CompositeDisposable> {
+  operator fun provideDelegate(thisRef: LifecycleOwner, property: KProperty<*>):
+    ReadOnlyProperty<LifecycleOwner, CompositeDisposable> {
     thisRef.lifecycle.addObserver(object : LifecycleObserver {
       @OnLifecycleEvent(Lifecycle.Event.ON_START)
       fun initializeDisposable() {
@@ -28,8 +28,8 @@ class DisposableOnLifecycleChange {
       }
     })
 
-    return object : ReadOnlyProperty<Fragment, CompositeDisposable> {
-      override fun getValue(thisRef: Fragment, property: KProperty<*>): CompositeDisposable {
+    return object : ReadOnlyProperty<LifecycleOwner, CompositeDisposable> {
+      override fun getValue(thisRef: LifecycleOwner, property: KProperty<*>): CompositeDisposable {
         return disposables ?: throw UninitializedPropertyAccessException(property.name)
       }
     }
