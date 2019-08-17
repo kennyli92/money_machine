@@ -1,7 +1,7 @@
-package com.example.money_machine.data.transaction
+package com.example.money_machine.transaction
 
 import androidx.lifecycle.ViewModel
-import com.example.money_machine.data.StateTransition
+import com.example.money_machine.StateTransition
 import com.example.money_machine.util.Logger
 import com.smshift.smshift.extensions.plusAssign
 import io.reactivex.Observable
@@ -9,7 +9,8 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.BehaviorSubject
 
 class TransactionViewModel : ViewModel() {
-  private var state: TransactionState = TransactionState()
+  private var state: TransactionState =
+    TransactionState()
   private val disposables: CompositeDisposable = CompositeDisposable()
   private val stateObs = BehaviorSubject.create<TransactionState>()
 
