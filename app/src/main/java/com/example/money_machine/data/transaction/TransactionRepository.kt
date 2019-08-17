@@ -11,7 +11,7 @@ class TransactionRepository @Inject constructor(
   // Return encapsulated response of Insert transaction method. Can be updated to return different kinds of response
   fun insert(transaction: Transaction): Observable<InsertTransactionResponse> {
     return transactionDao.insert(transaction = transaction)
-      .andThen(Observable.just(InsertTransactionResponse.Success))
+      .andThen(Observable.just(InsertTransactionResponse.Success as InsertTransactionResponse))
   }
 
   // Return encapsulated response of Get transaction method. Can be updated to return different kinds of response
