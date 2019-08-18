@@ -50,6 +50,7 @@ class TransactionViewModel(
       else -> false
     }
     return transactionRepository.getTransactionsByType(isSpending = isSpending)
+      .subscribeOn(Schedulers.computation())
       .map {
         when (it) {
           is GetTransactionsResponse.Success -> { state: TransactionState ->

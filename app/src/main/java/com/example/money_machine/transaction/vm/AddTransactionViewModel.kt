@@ -36,13 +36,15 @@ class AddTransactionViewModel(
   }
 
   private fun onInsertTransactionAction(transaction: Transaction): Observable<AddTransactionSingleEvent> {
-    return transactionRepository.insert(transaction = transaction).map {
-      when (it) {
-        InsertTransactionResponse.Success -> AddTransactionSingleEvent(isTransactionInserted = true)
-        // add logic to display error dialog
-        is InsertTransactionResponse.Error -> AddTransactionSingleEvent()
+    return transactionRepository.insert(transaction = transaction)
+      .subscribeOn(Schedulers.computation())
+      .map {
+        when (it) {
+          InsertTransactionResponse.Success -> AddTransactionSingleEvent(isTransactionInserted = true)
+          // add logic to display error dialog
+          is InsertTransactionResponse.Error -> AddTransactionSingleEvent()
+        }
       }
-    }
   }
 
   override fun onCleared() {
