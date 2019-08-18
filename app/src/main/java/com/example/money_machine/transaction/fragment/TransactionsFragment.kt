@@ -22,7 +22,9 @@ import com.example.money_machine.util.Logger
 import com.example.money_machine.util.ResetDependencyOnDestroy
 import com.smshift.smshift.extensions.plusAssign
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_transactions.view.*
 import java.util.*
 import javax.inject.Inject
@@ -62,10 +64,10 @@ class TransactionsFragment : Fragment() {
   }
 
   override fun onResume() {
-    adapter.items = listOf(Transaction(
-      userId = "Foo Bar", date = Date(), amount = "$123.00", tag = TransactionTag.OTHER, description = "description"))
-
+    // this consumes user UI actions to be processed in the VM
     vm.uiActionHandler(actionObs = Observable.just(TransactionUIAction.Load))
+
+    // this listens to a property observable for UI actions. In this case, updating the recycler view
     disposables += vm.transactions()
       .subscribe({ transactions ->
         adapter.items = transactions
