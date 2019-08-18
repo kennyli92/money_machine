@@ -4,12 +4,14 @@ import androidx.lifecycle.ViewModel
 import com.example.money_machine.R
 import com.example.money_machine.StateTransition
 import com.example.money_machine.data.transaction.GetTransactionsResponse
+import com.example.money_machine.data.transaction.Transaction
 import com.example.money_machine.data.transaction.TransactionRepository
 import com.example.money_machine.util.Logger
 import com.smshift.smshift.extensions.plusAssign
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
@@ -22,6 +24,11 @@ class TransactionViewModel(
     TransactionState()
   private val disposables: CompositeDisposable = CompositeDisposable()
   private val stateObs = BehaviorSubject.create<TransactionState>()
+
+  fun transactions(): Observable<List<Transaction>> {
+    return stateObs.map { it.transactions }
+      .observeOn(AndroidSchedulers.mainThread())
+  }
 
   fun uiActionHandler(actionObs: Observable<TransactionUIAction>) {
     disposables += actionObs

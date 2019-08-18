@@ -63,6 +63,7 @@ ext {
     lifeCycle.with {
       version = '2.0.0'
       extension = "androidx.lifecycle:lifecycle-extensions:$version"
+      compiler = "androidx.lifecycle:lifecycle-compiler:$version"
       rx = "androidx.lifecycle:lifecycle-reactivestreams-ktx:$version"
     }
 

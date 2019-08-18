@@ -51,6 +51,9 @@ dependencies {
   implementation deps.room.roomRxJava
   implementation deps.navComponent.fragment
   implementation deps.navComponent.ui
+  implementation deps.lifeCycle.extension
+  kapt deps.lifeCycle.compiler
+  implementation deps.lifeCycle.rx
 
   testImplementation deps.junit
   testImplementation deps.googletruth
