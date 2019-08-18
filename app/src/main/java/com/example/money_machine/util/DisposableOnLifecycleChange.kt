@@ -8,6 +8,10 @@ import io.reactivex.disposables.CompositeDisposable
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
+/**
+ * Operator overload provideDelegate to initialize [disposables] property when ON_START lifecycle event is observed
+ * on the host object (LifecycleOwner). Dispose and set [disposables] to null when ON_STOP lifecycle event is observed
+ */
 class DisposableOnLifecycleChange {
   private var disposables: CompositeDisposable? = null
 

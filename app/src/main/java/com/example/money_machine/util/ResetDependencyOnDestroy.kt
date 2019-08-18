@@ -7,6 +7,10 @@ import androidx.lifecycle.OnLifecycleEvent
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
+/**
+ * Operator overload provideDelegate to set resource to null when destroy lifecycle event is observed
+ * on the host object (LifecycleOwner).
+ */
 class ResetDependencyOnDestroy<T : Any> {
   private var dependencyValue: T? = null
 
@@ -22,6 +26,7 @@ class ResetDependencyOnDestroy<T : Any> {
     })
 
     return object : ReadWriteProperty<LifecycleOwner, T> {
+      // Throw error if dependency injection failed to set dependency value
       override fun getValue(thisRef: LifecycleOwner, property: KProperty<*>): T {
         return dependencyValue ?: throw UninitializedPropertyAccessException(property.name)
       }

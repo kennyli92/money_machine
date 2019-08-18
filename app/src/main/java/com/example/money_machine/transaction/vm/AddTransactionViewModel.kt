@@ -13,7 +13,6 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
 class AddTransactionViewModel(
-  private val transactionType: Int,
   private val transactionRepository: TransactionRepository
 ) : ViewModel() {
   private val disposables: CompositeDisposable = CompositeDisposable()

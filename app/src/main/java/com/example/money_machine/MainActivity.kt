@@ -22,7 +22,9 @@ class MainActivity : AppCompatActivity() {
     val navController = findNavController(R.id.nav_fragment)
     setSupportActionBar(toolbar)
     setupActionBarWithNavController(navController)
+    // let nav component manage bottom nav bar
     bottom_navigation.setupWithNavController(navController)
+    // hide bottom nav bar in nested level screens
     navController.addOnDestinationChangedListener { _, destination, _ ->
       when(destination.id) {
         R.id.fragment_add_transaction -> hideBottomNav()
