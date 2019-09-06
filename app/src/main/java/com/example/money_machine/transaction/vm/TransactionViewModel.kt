@@ -13,6 +13,7 @@ import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 
@@ -20,18 +21,18 @@ class TransactionViewModel(
   private val transactionType: Int,
   private val transactionRepository: TransactionRepository
 ) : ViewModel() {
+  @Volatile
   private var state: TransactionState =
     TransactionState()
-  private val disposables: CompositeDisposable = CompositeDisposable()
-  private val stateObs = BehaviorSubject.create<TransactionState>()
+  private val stateObs = BehaviorSubject.create<TransactionState>().toSerialized()
 
   fun transactions(): Observable<List<Transaction>> {
     return stateObs.map { it.transactions }
       .observeOn(AndroidSchedulers.mainThread())
   }
 
-  fun uiActionHandler(actionObs: Observable<TransactionUIAction>) {
-    disposables += actionObs
+  fun uiActionHandler(actionObs: Observable<TransactionUIAction>): Disposable {
+    return actionObs
       .observeOn(Schedulers.computation())
       .toFlowable(BackpressureStrategy.BUFFER)
       .flatMap {
@@ -66,10 +67,5 @@ class TransactionViewModel(
           }
         }
       }
-  }
-
-  override fun onCleared() {
-    disposables.dispose()
-    super.onCleared()
   }
 }

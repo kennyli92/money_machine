@@ -81,7 +81,7 @@ class AddTransactionFragment : Fragment() {
       return@map AddTransactionUIAction.InsertTransaction(transaction = transaction) as AddTransactionUIAction
     }
     // this consumes user UI actions to be processed in the VM
-    vm.uiActionHandler(actionObs = addTransactionUIActionSignal)
+    disposables += vm.uiActionHandler(actionObs = addTransactionUIActionSignal)
 
     // pop screen off back stack upon success transaction insertion
     disposables += vm.isTransactionInserted()

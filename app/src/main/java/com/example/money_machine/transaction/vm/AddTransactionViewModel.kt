@@ -9,22 +9,22 @@ import com.example.money_machine.util.Logger
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
 class AddTransactionViewModel(
   private val transactionRepository: TransactionRepository
 ) : ViewModel() {
-  private val disposables: CompositeDisposable = CompositeDisposable()
-  private val singleEventObs = PublishSubject.create<AddTransactionSingleEvent>()
+  private val singleEventObs = PublishSubject.create<AddTransactionSingleEvent>().toSerialized()
 
   fun isTransactionInserted(): Observable<Boolean> {
     return singleEventObs.map { it.isTransactionInserted }
       .observeOn(AndroidSchedulers.mainThread())
   }
 
-  fun uiActionHandler(actionObs: Observable<AddTransactionUIAction>) {
-    disposables += actionObs
+  fun uiActionHandler(actionObs: Observable<AddTransactionUIAction>): Disposable {
+    return actionObs
       .observeOn(Schedulers.computation())
       .flatMap {
         when (it) {
@@ -45,10 +45,5 @@ class AddTransactionViewModel(
           is InsertTransactionResponse.Error -> AddTransactionSingleEvent()
         }
       }
-  }
-
-  override fun onCleared() {
-    disposables.dispose()
-    super.onCleared()
   }
 }

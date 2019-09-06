@@ -60,7 +60,7 @@ class TransactionsFragment : Fragment() {
 
   override fun onResume() {
     // this consumes user UI actions to be processed in the VM
-    vm.uiActionHandler(actionObs = Observable.just(TransactionUIAction.Load))
+    disposables += vm.uiActionHandler(actionObs = Observable.just(TransactionUIAction.Load))
 
     // this listens to a property observable for UI actions. In this case, updating the recycler view
     disposables += vm.transactions()
