@@ -1,6 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
 
-package com.smshift.smshift.extensions
+package com.example.money_machine.extensions
 
 inline fun <T : Any> T?.requireNotNull(): T {
   return requireNotNull(this)

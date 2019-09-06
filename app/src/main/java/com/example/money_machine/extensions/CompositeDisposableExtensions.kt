@@ -1,4 +1,4 @@
-package com.smshift.smshift.extensions
+package com.example.money_machine.extensions
 
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

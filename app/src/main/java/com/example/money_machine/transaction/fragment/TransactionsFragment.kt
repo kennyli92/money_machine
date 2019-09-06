@@ -10,9 +10,8 @@ import com.example.money_machine.MainActivity
 import com.example.money_machine.R
 import com.example.money_machine.dagger.ActivityComponent
 import com.example.money_machine.dagger.Injector
-import com.example.money_machine.data.transaction.Transaction
 import com.example.money_machine.data.transaction.TransactionRepository
-import com.example.money_machine.data.transaction.TransactionTag
+import com.example.money_machine.extensions.plusAssign
 import com.example.money_machine.transaction.vm.TransactionUIAction
 import com.example.money_machine.transaction.vm.TransactionViewModel
 import com.example.money_machine.transaction.vm.TransactionViewModelFactory
@@ -20,13 +19,9 @@ import com.example.money_machine.transaction.vm.TransactionsAdapter
 import com.example.money_machine.util.DisposableOnLifecycleChange
 import com.example.money_machine.util.Logger
 import com.example.money_machine.util.ResetDependencyOnDestroy
-import com.smshift.smshift.extensions.plusAssign
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_transactions.view.*
-import java.util.*
 import javax.inject.Inject
 
 class TransactionsFragment : Fragment() {

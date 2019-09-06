@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.money_machine.R
 import com.example.money_machine.data.transaction.Transaction
-import com.smshift.smshift.extensions.checkNotNull
+import com.example.money_machine.extensions.checkNotNull
 
 class TransactionsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
   private var _items: List<Transaction> = emptyList()

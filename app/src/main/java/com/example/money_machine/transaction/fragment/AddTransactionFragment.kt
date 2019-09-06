@@ -13,11 +13,11 @@ import com.example.money_machine.dagger.Injector
 import com.example.money_machine.data.transaction.Transaction
 import com.example.money_machine.data.transaction.TransactionRepository
 import com.example.money_machine.data.transaction.TransactionTag
+import com.example.money_machine.extensions.plusAssign
 import com.example.money_machine.transaction.vm.*
 import com.example.money_machine.util.DisposableOnLifecycleChange
 import com.example.money_machine.util.Logger
 import com.example.money_machine.util.ResetDependencyOnDestroy
-import com.smshift.smshift.extensions.plusAssign
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.fragment_add_transaction.view.*

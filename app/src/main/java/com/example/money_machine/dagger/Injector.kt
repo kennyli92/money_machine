@@ -2,8 +2,7 @@ package com.example.money_machine.dagger
 
 import android.app.Application
 import com.example.money_machine.MainActivity
-import com.smshift.smshift.extensions.requireNotNull
-
+import com.example.money_machine.extensions.requireNotNull
 
 class Injector private constructor() {
   companion object {

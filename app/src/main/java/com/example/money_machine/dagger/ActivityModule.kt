@@ -3,8 +3,8 @@ package com.example.money_machine.dagger
 import android.content.Context
 import androidx.appcompat.app.ActionBar
 import com.example.money_machine.MainActivity
+import com.example.money_machine.extensions.requireNotNull
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.smshift.smshift.extensions.requireNotNull
 import dagger.Module
 import dagger.Provides
 import kotlinx.android.synthetic.main.activity_main.*

@@ -6,8 +6,8 @@ import com.example.money_machine.StateTransition
 import com.example.money_machine.data.transaction.GetTransactionsResponse
 import com.example.money_machine.data.transaction.Transaction
 import com.example.money_machine.data.transaction.TransactionRepository
+import com.example.money_machine.extensions.plusAssign
 import com.example.money_machine.util.Logger
-import com.smshift.smshift.extensions.plusAssign
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.Observable
