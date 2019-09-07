@@ -4,11 +4,9 @@ import androidx.lifecycle.ViewModel
 import com.example.money_machine.data.transaction.InsertTransactionResponse
 import com.example.money_machine.data.transaction.Transaction
 import com.example.money_machine.data.transaction.TransactionRepository
-import com.example.money_machine.extensions.plusAssign
 import com.example.money_machine.util.Logger
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
