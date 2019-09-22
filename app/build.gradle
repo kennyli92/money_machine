@@ -57,5 +57,6 @@ dependencies {
 
   testImplementation deps.junit
   testImplementation deps.googletruth
+  testImplementation deps.mockito
   testImplementation deps.mockitoKotlin
 }

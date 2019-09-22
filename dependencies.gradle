@@ -77,9 +77,11 @@ ext {
       option = "org.funktionale:funktionale-option:$version"
     }
 
-    googletruth = 'com.google.truth:truth:0.37'
+    googletruth = 'com.google.truth:truth:1.0'
 
-    mockitoKotlin = 'com.nhaarman:mockito-kotlin:1.5.0'
+    mockito = 'org.mockito:mockito-core:3.0.0'
+
+    mockitoKotlin = 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
 
     junit = 'junit:junit:4.12'
   }
