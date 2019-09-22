@@ -84,5 +84,10 @@ ext {
     mockitoKotlin = 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
 
     junit = 'junit:junit:4.12'
+
+    // android test
+    androidRunner = 'androidx.test:runner:1.2.0'
+    expresso = 'androidx.test.espresso:espresso-core:3.2.0'
+    androidJunitExt = 'androidx.test.ext:junit:1.1.1'
   }
 }

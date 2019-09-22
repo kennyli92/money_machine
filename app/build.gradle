@@ -59,4 +59,7 @@ dependencies {
   testImplementation deps.googletruth
   testImplementation deps.mockito
   testImplementation deps.mockitoKotlin
+  androidTestImplementation deps.androidRunner
+  androidTestImplementation deps.expresso
+  androidTestImplementation deps.androidJunitExt
 }
