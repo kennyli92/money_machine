@@ -62,4 +62,5 @@ dependencies {
   androidTestImplementation deps.androidRunner
   androidTestImplementation deps.expresso
   androidTestImplementation deps.androidJunitExt
+  androidTestImplementation deps.androidTruthExt
 }
