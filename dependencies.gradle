@@ -87,6 +87,7 @@ ext {
 
     // android test
     androidRunner = 'androidx.test:runner:1.2.0'
+    androidCoreTesting = 'android.arch.core:core-testing:1.1.1'
     expresso = 'androidx.test.espresso:espresso-core:3.2.0'
     androidJunitExt = 'androidx.test.ext:junit:1.1.1'
     androidTruthExt = 'androidx.test.ext:truth:1.2.0'
