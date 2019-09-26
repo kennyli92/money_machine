@@ -26,7 +26,7 @@ class TransactionRepositoryTest {
     RxJavaPlugins.reset()
   }
 
-  val transactionDao: TransactionDao = mock()
+  private val transactionDao: TransactionDao = mock()
 
   private fun transactionRepository(): TransactionRepository {
     return TransactionRepository(

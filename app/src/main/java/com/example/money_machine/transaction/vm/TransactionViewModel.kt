@@ -16,13 +16,17 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 
 class TransactionViewModel(
+  // resId of R.string.transaction_spending or R.string.transaction_saving
   private val transactionType: Int,
   private val transactionRepository: TransactionRepository
 ) : ViewModel() {
   @Volatile
-  private var state: TransactionState =
-    TransactionState()
+  private var state: TransactionState = TransactionState()
   private val stateObs = BehaviorSubject.create<TransactionState>().toSerialized()
+
+  fun stateObs(): Observable<TransactionState> {
+    return stateObs.observeOn(AndroidSchedulers.mainThread())
+  }
 
   fun transactions(): Observable<List<Transaction>> {
     return stateObs.map { it.transactions }
@@ -56,11 +60,11 @@ class TransactionViewModel(
             state.copy(transactions = it.transactions)
           }
           GetTransactionsResponse.NoTransactions -> { state: TransactionState ->
-            // update to send no transactions error
+            // TODO: update to send no transactions error
             state.copy()
           }
           is GetTransactionsResponse.Error -> { state: TransactionState ->
-            // update to send generic error
+            // TODO: update to send generic error
             state.copy()
           }
         }
