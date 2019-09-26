@@ -1,7 +1,7 @@
 package com.example.money_machine.data.transaction
 
 import io.reactivex.Flowable
-import io.reactivex.Observable
+import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -10,9 +10,12 @@ class TransactionRepository @Inject constructor(
   private val transactionDao: TransactionDao
 ) {
   // Return encapsulated response of Insert transaction method. Can be updated to return different kinds of response
-  fun insert(transaction: Transaction): Observable<InsertTransactionResponse> {
+  fun insert(transaction: Transaction): Single<InsertTransactionResponse> {
     return transactionDao.insert(transaction = transaction)
-      .andThen(Observable.just(InsertTransactionResponse.Success as InsertTransactionResponse))
+      .map { InsertTransactionResponse.Success as InsertTransactionResponse }
+      .onErrorReturn {  throwable ->
+        InsertTransactionResponse.Error(message = throwable.message ?: "Unknown Error")
+      }
   }
 
   // Return encapsulated response of Get transaction method. Can be updated to return different kinds of response
@@ -25,8 +28,8 @@ class TransactionRepository @Inject constructor(
           Flowable.just(GetTransactionsResponse.NoTransactions)
         }
       }
-      .onErrorReturn {
-        GetTransactionsResponse.Error(message = it.message ?: "Unknown Error")
+      .onErrorReturn { throwable ->
+        GetTransactionsResponse.Error(message = throwable.message ?: "Unknown Error")
       }
   }
 }

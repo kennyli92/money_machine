@@ -35,6 +35,7 @@ class AddTransactionViewModel(
 
   private fun onInsertTransactionAction(transaction: Transaction): Observable<AddTransactionSingleEvent> {
     return transactionRepository.insert(transaction = transaction)
+      .toObservable()
       .subscribeOn(Schedulers.computation())
       .map {
         when (it) {
