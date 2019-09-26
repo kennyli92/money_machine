@@ -100,4 +100,18 @@ class TransactionViewModelTest {
       .assertValueCount(1)
       .assertValueAt(0, TransactionState())
   }
+
+  @Test
+  fun transactionObs() {
+    val transactionViewModel = transactionViewModel()
+    val transactions = listOf(Transaction(userId = "userId"))
+
+    val testObs = transactionViewModel.transactionsObs().test()
+    transactionViewModel.stateObs.onNext(TransactionState(transactions = transactions))
+
+    testObs.assertNotComplete()
+      .assertNoErrors()
+      .assertValueCount(1)
+      .assertValueAt(0, transactions)
+  }
 }

@@ -63,7 +63,7 @@ class TransactionsFragment : Fragment() {
     disposables += vm.uiActionHandler(actionObs = Observable.just(TransactionUIAction.Load))
 
     // this listens to a property observable for UI actions. In this case, updating the recycler view
-    disposables += vm.transactions()
+    disposables += vm.transactionsObs()
       .subscribe({ transactions ->
         adapter.items = transactions
       }, Logger.logErrorAndThrow())

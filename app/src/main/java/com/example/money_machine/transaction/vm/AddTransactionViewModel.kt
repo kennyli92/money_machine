@@ -1,5 +1,6 @@
 package com.example.money_machine.transaction.vm
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import com.example.money_machine.data.transaction.InsertTransactionResponse
 import com.example.money_machine.data.transaction.Transaction
@@ -14,9 +15,14 @@ import io.reactivex.subjects.PublishSubject
 class AddTransactionViewModel(
   private val transactionRepository: TransactionRepository
 ) : ViewModel() {
-  private val singleEventObs = PublishSubject.create<AddTransactionSingleEvent>().toSerialized()
+  @VisibleForTesting
+  internal val singleEventObs = PublishSubject.create<AddTransactionSingleEvent>().toSerialized()
 
-  fun isTransactionInserted(): Observable<Boolean> {
+  fun singleEventObs(): Observable<AddTransactionSingleEvent> {
+    return singleEventObs.observeOn(AndroidSchedulers.mainThread())
+  }
+
+  fun isTransactionInsertedObs(): Observable<Boolean> {
     return singleEventObs.map { it.isTransactionInserted }
       .observeOn(AndroidSchedulers.mainThread())
   }

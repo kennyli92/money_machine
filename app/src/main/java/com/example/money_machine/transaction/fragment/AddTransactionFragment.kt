@@ -84,7 +84,7 @@ class AddTransactionFragment : Fragment() {
     disposables += vm.uiActionHandler(actionObs = addTransactionUIActionSignal)
 
     // pop screen off back stack upon success transaction insertion
-    disposables += vm.isTransactionInserted()
+    disposables += vm.isTransactionInsertedObs()
       .subscribe({
         view!!.findNavController().popBackStack()
       }, Logger.logErrorAndThrow())

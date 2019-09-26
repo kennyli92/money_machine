@@ -1,5 +1,6 @@
 package com.example.money_machine.transaction.vm
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import com.example.money_machine.R
 import com.example.money_machine.StateTransition
@@ -22,13 +23,14 @@ class TransactionViewModel(
 ) : ViewModel() {
   @Volatile
   private var state: TransactionState = TransactionState()
-  private val stateObs = BehaviorSubject.create<TransactionState>().toSerialized()
+  @VisibleForTesting
+  internal val stateObs = BehaviorSubject.create<TransactionState>().toSerialized()
 
   fun stateObs(): Observable<TransactionState> {
     return stateObs.observeOn(AndroidSchedulers.mainThread())
   }
 
-  fun transactions(): Observable<List<Transaction>> {
+  fun transactionsObs(): Observable<List<Transaction>> {
     return stateObs.map { it.transactions }
       .observeOn(AndroidSchedulers.mainThread())
   }
@@ -60,7 +62,7 @@ class TransactionViewModel(
             state.copy(transactions = it.transactions)
           }
           GetTransactionsResponse.NoTransactions -> { state: TransactionState ->
-            // TODO: update to send no transactions error
+            // TODO: update to send no transactionsObs error
             state.copy()
           }
           is GetTransactionsResponse.Error -> { state: TransactionState ->
