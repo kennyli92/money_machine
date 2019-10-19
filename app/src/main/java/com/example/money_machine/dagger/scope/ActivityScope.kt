@@ -1,4 +1,4 @@
-package com.example.money_machine.dagger
+package com.example.money_machine.dagger.scope
 
 import javax.inject.Scope
 

@@ -1,4 +1,4 @@
-package com.example.money_machine.dagger
+package com.example.money_machine.dagger.module
 
 import android.content.Context
 import com.example.money_machine.data.RoomDb

@@ -1,28 +1,17 @@
 package com.example.money_machine.dagger
 
-import android.app.Application
+import com.example.money_machine.App
 import com.example.money_machine.MainActivity
-import com.example.money_machine.extensions.requireNotNull
+import com.example.money_machine.dagger.component.ActivityComponent
+import com.example.money_machine.dagger.component.AppComponent
 
-class Injector private constructor() {
-  companion object {
-    private var appComponent: AppComponent? = null
+interface Injector {
+  /**
+   * This will always be called in [App]
+   */
+  fun initializeAppComponent(app: App)
 
-    fun getAppComponent(application: Application): AppComponent {
-      if (appComponent == null) {
-        appComponent =
-          DaggerAppComponent
-            .builder()
-            .appModule(AppModule(application = application))
-            .build()
-      }
+  val appComponent: AppComponent
 
-      return appComponent.requireNotNull()
-    }
-
-    fun getActivityComponent(activity: MainActivity): ActivityComponent {
-      return getAppComponent(activity.application)
-        .activityComponent(ActivityModule(activity = activity))
-    }
-  }
+  fun activityComponent(activity: MainActivity): ActivityComponent
 }

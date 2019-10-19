@@ -6,12 +6,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.money_machine.App
 import com.example.money_machine.MainActivity
 import com.example.money_machine.R
-import com.example.money_machine.dagger.ActivityComponent
-import com.example.money_machine.dagger.Injector
+import com.example.money_machine.dagger.component.ActivityComponent
 import com.example.money_machine.data.transaction.TransactionRepository
+import com.example.money_machine.extensions.application
 import com.example.money_machine.extensions.plusAssign
+import com.example.money_machine.extensions.requireNotNull
 import com.example.money_machine.transaction.vm.TransactionUIAction
 import com.example.money_machine.transaction.vm.TransactionViewModel
 import com.example.money_machine.transaction.vm.TransactionViewModelFactory
@@ -34,7 +36,8 @@ class TransactionsFragment : Fragment() {
   private var transactionType: Int = 0
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-    component = Injector.getActivityComponent(activity = activity as MainActivity)
+    val app = application().requireNotNull() as App
+    component = app.activityComponent(activity = activity.requireNotNull() as MainActivity)
     component.inject(this)
 
     arguments?.let {
