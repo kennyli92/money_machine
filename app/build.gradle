@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "kotlin-allopen"
 
 android {
   compileSdkVersion 28
@@ -20,6 +21,10 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
+}
+
+allOpen {
+  annotation("com.example.money_machine.annotation.OpenClass")
 }
 
 dependencies {
