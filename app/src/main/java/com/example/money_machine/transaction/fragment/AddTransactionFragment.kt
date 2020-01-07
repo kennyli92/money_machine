@@ -61,7 +61,7 @@ class AddTransactionFragment : Fragment() {
     return view
   }
 
-  override fun onResume() {
+  override fun onStart() {
     // set dynamic title
     (activity as AppCompatActivity).supportActionBar!!.title =
       resources.getString(R.string.transaction_add_arg, resources.getString(transactionType))
@@ -91,7 +91,7 @@ class AddTransactionFragment : Fragment() {
       .subscribe({
         view!!.findNavController().popBackStack()
       }, Logger.logErrorAndThrow())
-    super.onResume()
+    super.onStart()
   }
 
   override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

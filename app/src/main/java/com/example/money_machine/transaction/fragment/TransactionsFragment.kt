@@ -61,7 +61,7 @@ class TransactionsFragment : Fragment() {
     return view
   }
 
-  override fun onResume() {
+  override fun onStart() {
     // this consumes user UI actions to be processed in the VM
     disposables += vm.uiActionHandler(actionObs = Observable.just(TransactionUIAction.Load))
 
@@ -71,7 +71,7 @@ class TransactionsFragment : Fragment() {
         adapter.items = transactions
       }, Logger.logErrorAndThrow())
 
-    super.onResume()
+    super.onStart()
   }
 
   override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -18,14 +18,19 @@ class DisposableOnLifecycleChange {
   operator fun provideDelegate(thisRef: LifecycleOwner, property: KProperty<*>):
     ReadOnlyProperty<LifecycleOwner, CompositeDisposable> {
     thisRef.lifecycle.addObserver(object : LifecycleObserver {
-      @OnLifecycleEvent(Lifecycle.Event.ON_START)
+      @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
       fun initializeDisposable() {
-        if (thisRef.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+        if (thisRef.lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)) {
           disposables = CompositeDisposable()
         }
       }
 
       @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+      fun clearDisposables() {
+        disposables?.clear()
+      }
+
+      @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
       fun disposeDisposables() {
         disposables?.dispose()
         disposables = null
